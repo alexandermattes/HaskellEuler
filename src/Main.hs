@@ -33,9 +33,9 @@ main = do
             putStr "Please enter problem number (0 for all): "
             hFlush stdout
             n <- readLn :: IO ProblemID
-            if n==0 then do
+            if n==0 then
                 printAllSolutions
-            else do
+            else
                 printSolution n
             loop
     loop
@@ -44,14 +44,14 @@ main = do
 printAllSolutions :: IO ()
 printAllSolutions = do
     putStrLn "~~~ Gotta solve em all! ~~~"
-    mapM_ (printSolution . fst) $ solutions
+    mapM_ (printSolution . fst) solutions
 
 -- | Prints a solution for a given problems.
 --   Also checks if the solution is correct and how long the calculation took.
 printSolution :: ProblemID -> IO ()
 printSolution n = do
     let a = solveProblem n
-    if isNothing a then do
+    if isNothing a then
         putStrLn ("Problem " ++ show n ++ " not solved yet.")
     else do
         printf "Problem %3d: " n

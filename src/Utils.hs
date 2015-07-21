@@ -35,7 +35,7 @@ type Solution = String
 -- True
 -- CPU time:   0.00s
 time :: (Show a) => a -> IO ()
-time = timeIt . putStrLn . show
+time = timeIt . print
 
 -- | Shortcut for the often needed 'Just. show'
 js :: Show a => a -> Maybe Solution
