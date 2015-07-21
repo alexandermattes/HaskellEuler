@@ -24,6 +24,13 @@ module Solve
 import Data.Maybe
 
 import Utils (ProblemID, Solution, time)
+import Solutions.Solutions0XX
+import Solutions.Solutions1XX
+import Solutions.Solutions2XX
+import Solutions.Solutions3XX
+import Solutions.Solutions4XX
+import Solutions.Solutions5XX
+import Solutions.Solutions6XX
 
 
 -- | Minimal id for available project euler problems.
@@ -37,7 +44,16 @@ maxProblemID = 522
 -- | Returns the solution for a project euler problem.
 solveProblem :: ProblemID       -- ^ The problem id.
              -> Maybe Solution  -- ^ The solution, if implemented, otherwise 'Nothing'.
-solveProblem n = Nothing
+solveProblem n
+    | n <=  0   = Nothing
+    | n < 100   = solveProblem0XX n
+    | n < 200   = solveProblem1XX n
+    | n < 300   = solveProblem2XX n
+    | n < 400   = solveProblem3XX n
+    | n < 500   = solveProblem4XX n
+    | n < 600   = solveProblem5XX n
+    | n < 700   = solveProblem6XX n
+    | otherwise = Nothing
 
 -- | List of solutions for all solved problems.
 solutions :: [(ProblemID,Solution)]
