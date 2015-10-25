@@ -11,6 +11,7 @@
 -}
 module Main
     ( main
+    , tp
     ) where
 
 
@@ -19,7 +20,7 @@ import System.TimeIt (timeItT)
 import Data.Maybe (fromJust, isNothing)
 import Text.Printf (printf)
 
-import Solve (ProblemID, minProblemID, maxProblemID, solveProblem, solutions, numberSolvedProblems)
+import Solve (ProblemID, minProblemID, maxProblemID, solveProblem, solutions, numberSolvedProblems, tp)
 import Verify (isCorrectFor)
 
 
@@ -54,7 +55,7 @@ printSolution n = do
     if isNothing a then
         putStrLn ("Problem " ++ show n ++ " not solved yet.")
     else do
-        printf "Problem %3d: " n
+        _ <- printf "Problem %3d: " n
         let s = fromJust a
         (t,_) <- timeItT  $ printf "%-35s" s
         let c = case s `isCorrectFor` n of
